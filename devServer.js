@@ -49,7 +49,7 @@ app.use(express.static(publicPath));
 //  RESTful API
 app.use(bodyParser.json({ type: 'application/json' }))
 
-var port = isProduction ? (process.env.PORT || 80) : 3000;
+var port = isProduction ? (process.env.PORT || 80) : 4000;
 
 app.put('/api/login', function(req, res) {
   var credentials = req.body;
