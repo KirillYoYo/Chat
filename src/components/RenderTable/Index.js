@@ -7,7 +7,9 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {saveTableData} from '../../actions/table';
 
-import WrappedRegistrationForm from './modal'
+import RenderModal from '../RenderModal'
+
+//import WrappedRegistrationForm from '../../views/Table/modal'
 
 
 class TablePage extends React.Component {
@@ -27,10 +29,9 @@ class TablePage extends React.Component {
 		this.setState({
 			modalOpen: true,
 		});
-	}
+	};
 	handleOk = (e, some) => {
 		console.log(e);
-		console.log(some);
 		this.setState({
 			modalOpen: false,
 		});
@@ -44,25 +45,25 @@ class TablePage extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.columns = [{
-			title: 'Name',
-			dataIndex: 'name',
-			sorter: true,
-			//render: name => `${name.first} ${name.last}`,
-			render: name => `${name}`,
-			width: '20%',
-		},
-			{
-				title: 'Change rec',
-				dataIndex: 'rec',
-				sorter: false,
-				render: (text, record, index) => <div><a onClick={this.changeRecord.bind(this, text, record, index)}>Change {text}</a></div>,
-				width: '20%',
-			}
-		];
+		// this.columns = [{
+		// 	title: 'Name',
+		// 	dataIndex: 'name',
+		// 	sorter: true,
+		// 	//render: name => `${name.first} ${name.last}`,
+		// 	render: name => `${name}`,
+		// 	width: '20%',
+		// },
+		// 	{
+		// 		title: 'Change rec',
+		// 		dataIndex: 'rec',
+		// 		sorter: false,
+		// 		render: (text, record, index) => <div><a onClick={this.changeRecord.bind(this, text, record, index)}>Change {text}</a></div>,
+		// 		width: '20%',
+		// 	}
+		// ];
+		this.columns = this.props.columns;
 	}
 	changeRecord (text, record, index) {
-		console.log(record);
 		this.setState({
 			modalData: record,
 		});
@@ -98,6 +99,7 @@ class TablePage extends React.Component {
 		this.setState({loading: true});
 		api.get('/ariya_table_update', {
 			params: {
+				urlToReq: this.props.url,
 				results: 10,
 				...params,
 			},
@@ -108,7 +110,12 @@ class TablePage extends React.Component {
 				dataSource: new_data
 			};
 			const pagination = this.state.pagination;
-			pagination.total = res.data.length > 0 ?  new_data.length +  10 : new_data.length;
+			//pagination.total = res.data.length > 0 ?  new_data.length +  10 : new_data.length;
+			if (res.data.length > 0 || res.data.length > 10) {
+				pagination.total = new_data.length +  10
+			} else {
+				pagination.total =  new_data.length
+			}
 			this.setState({
 				loading: false,
 				data: data,
@@ -120,24 +127,46 @@ class TablePage extends React.Component {
 				data: data,
 				endData: res.data.length === 0,
 				pagination,
+				component: this.props.url
 			});
 		});
 
 	};
 
 	componentDidMount() {
-		!this.props.table.table ? this.fetch({current: 0, limit: 50}) : null;
-		const table_props = this.props.table.table;
-		this.props.table ?
-			this.setState({
-				...this.state,
-				...table_props
-			})
-		: null
+		//!this.props.table.table ? this.fetch({current: 0, limit: 50}) : null;
+		if (this.props.table.table === null) {
+			this.fetch({current: 0, limit: 50})
+
+		} else {
+			if (!this.props.table.table[this.props.url]) {
+				this.fetch({current: 0, limit: 50})
+			}
+		}
+		if (this.props.table.table) {
+			const table_props = this.props.table.table[this.props.url] && this.props.table.table[this.props.url];
+			this.props.table ?
+				this.setState({
+					...this.state,
+					...table_props
+				})
+				: null
+		}
+
+		this.columns.push(
+			{
+				title: 'Change rec',
+				dataIndex: 'rec',
+				sorter: false,
+				render: (text, record, index) => <div><a onClick={this.changeRecord.bind(this, text, record, index)}>Change {text}</a></div>,
+				width: '20%',
+			}
+		);
 	}
 
 	render() {
 		const columns = this.columns;
+
 
 		return (
 			<PanelBox title="Table Page">
@@ -157,7 +186,8 @@ class TablePage extends React.Component {
 				>
 					{/*non form-redux*/}
 					{this.state.modalOpen ?
-						<WrappedRegistrationForm
+						<RenderModal
+							modalInner={this.props.modalInner}
 							formItems={this.state.modalData}
 							func={{
 								onCancel: this.handleCancel.bind(this),

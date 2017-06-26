@@ -34,7 +34,28 @@ mock.onGet('/randomuser').reply((config) => {
 	});
 });
 
-
+mock.onGet('/ariya_table').reply((config) => {
+	return new Promise(function (resolve, reject) {
+		normalAxios.get('http://localhost:3000/Departments/?_start=0&_limit=55', {
+			responseType: 'json'
+		}).then((res) => {
+			resolve([200, res.data]);
+		}).catch((err) => {
+			resolve([500, err]);
+		});
+	});
+});
+mock.onGet('/ariya_table_update').reply((config) => {
+	return new Promise(function (resolve, reject) {
+		normalAxios.get('http://localhost:3000/'+config.params.urlToReq+'/?_start='+config.params.current+'&_limit='+config.params.limit+'', {
+			responseType: 'json'
+		}).then((res) => {
+			resolve([200, res.data]);
+		}).catch((err) => {
+			resolve([500, err]);
+		});
+	});
+});
 
 
 

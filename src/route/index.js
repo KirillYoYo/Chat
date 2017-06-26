@@ -7,6 +7,8 @@ import Home from '../views/Home';
 import Login from '../views/Login';
 import Form from '../views/Form';
 import Table from '../views/Table';
+import Employees from '../views/Employees';
+import Departments from '../views/Departments';
 import Page2 from '../views/Page2';
 import Weather from '../views/Weather';
 
@@ -27,6 +29,8 @@ const routes = (
 			<Route path="form" component={Form}/>
 			<Route path="table" component={Table}/>
 			<Route path="page2" component={Page2}/>
+			<Route path="employees" component={Employees}/>
+			<Route path="departments" component={Departments}/>
 		</Route>
 		<Route path="login" component={Login}/>
 	</Route>

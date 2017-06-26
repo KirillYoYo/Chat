@@ -20,17 +20,27 @@ module.exports = {
 				// 	key: 103,
 				// 	url: '/table'
 				// },
+				{
+					name: 'Employees',
+					key: 104,
+					url: '/employees'
+				},
+				{
+					name: 'Departments',
+					key: 106,
+					url: '/departments'
+				},
 				// {
 				// 	name: '选项2',
 				// 	key: 104,
 				// 	url: '/page2'
 				// },
-				{
-					name: 'Weather',
-					key: 105,
-					icon: 'cloud',
-					url: '/weather'
-				},
+				// {
+				// 	name: 'Weather',
+				// 	key: 105,
+				// 	icon: 'cloud',
+				// 	url: '/weather'
+				// },
 			]
 		},
 		// {
