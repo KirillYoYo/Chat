@@ -22,7 +22,7 @@ const validate = function (next, replace, callback) {
 
 const routes = (
 	<Route path="/" onEnter={validate}>
-		<IndexRedirect to="weather"/>
+		<IndexRedirect to="employees"/>
 		<Route component={App}>
 			<Route path="weather" component={Weather} />
 			<Route path="home" component={Home}/>
