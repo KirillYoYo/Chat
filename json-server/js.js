@@ -9,7 +9,7 @@ module.exports = function() {
 	data.Employees = [];
 
 	for (var i = 0; i < 300; i++) {
-		data.Employees.push( { id: i, firstName: 'name' + i, lastName: 'Lastname' + i, departmentId: Math.round(Math.floor(Math.random()*100+1)/20) } )
+		data.Employees.push( { id: i, firstName: 'name' + i, lastName: 'Lastname' + i, departmentId: Math.round(Math.floor(Math.random()*100+1)/50) } )
 	}
 
 	return data;

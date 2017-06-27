@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button} from 'antd';
+import dataJs from '../../../json-server/js'
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -68,8 +69,6 @@ class RenderModal extends React.Component {
 
 	render() {
 		const {getFieldDecorator} = this.props.form;
-		console.log('RENDER');
-		console.log(this.props.formItems);
 		const formItemLayout = {
 			labelCol: {span: 6},
 			wrapperCol: {span: 14},
@@ -99,6 +98,39 @@ class RenderModal extends React.Component {
 					Object.keys(this.props.formItems).map((item, i) => {
 						const val = '' + this.props.formItems[item];
 						if (item !== 'id') {
+							if (item === 'departmentId') {
+								return (
+									<FormItem
+										{...formItemLayout}
+										label={item}
+										hasFeedback
+										key={i}
+									>
+										{getFieldDecorator(val, {
+											initialValue: dataJs().Departments[parseInt(val)].name,
+											// rules: [{
+											// 	type: 'string', message: 'The input is not valid name!',
+											// }, {
+											// 	required: true, message: 'Please input your  new name!',
+											// }],
+										})(
+											<Select
+												//value={val}
+												//size={size}
+												style={{ width: '100%' }}
+												//onChange={this.handleCurrencyChange}
+											>
+												{dataJs().Departments.map( (itemD, iD) => {
+													return (
+														<Option key={iD + 100} value={itemD.name}>{itemD.name}</Option>
+													)
+												} )}
+											</Select>
+										)}
+									</FormItem>
+
+								)
+							}
 							return (
 								<FormItem
 									{...formItemLayout}

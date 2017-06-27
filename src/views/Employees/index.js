@@ -1,5 +1,6 @@
 import React from 'react'
 import RenderTable from '../../components/RenderTable'
+import dataJs from '../../../json-server/js'
 
 //import WrappedRegistrationForm from '../../views/Table/modal'
 
@@ -28,7 +29,9 @@ export default class Employees extends React.Component {
 				dataIndex: 'departmentId',
 				sorter: true,
 				//render: name => `${name.first} ${name.last}`,
-				render: departmentId => `${departmentId}`,
+				render: departmentId => {
+					return ( dataJs().Departments[`${departmentId}`].name);
+				},
 				width: '20%',
 			}
 		];
