@@ -30,6 +30,11 @@ module.exports = {
 					key: 106,
 					url: '/departments'
 				},
+				{
+					name: 'Cssr',
+					key: 107,
+					url: '/cssrTable'
+				},
 				// {
 				// 	name: '选项2',
 				// 	key: 104,

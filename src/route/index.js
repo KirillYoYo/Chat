@@ -11,6 +11,7 @@ import Employees from '../views/Employees';
 import Departments from '../views/Departments';
 import Page2 from '../views/Page2';
 import Weather from '../views/Weather';
+import CssrTable from '../views/Cssr-table';
 
 const validate = function (next, replace, callback) {
 	const isLoggedIn = !!window.localStorage.getItem('uid')
@@ -31,6 +32,7 @@ const routes = (
 			<Route path="page2" component={Page2}/>
 			<Route path="employees" component={Employees}/>
 			<Route path="departments" component={Departments}/>
+			<Route path="cssrTable" component={CssrTable}/>
 		</Route>
 		<Route path="login" component={Login}/>
 	</Route>

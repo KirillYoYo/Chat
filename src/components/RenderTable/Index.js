@@ -8,6 +8,9 @@ import {connect} from 'react-redux';
 import {saveTableData} from '../../actions/table';
 
 import RenderModal from '../RenderModal'
+import { Spin } from 'antd';
+import './index.less'
+
 
 //import WrappedRegistrationForm from '../../views/Table/modal'
 
@@ -166,17 +169,22 @@ class TablePage extends React.Component {
 
 	render() {
 		const columns = this.columns;
+		const {dataSource, pagination, loading} = this.state;
 
 
 		return (
 			<PanelBox title="Table Page">
-				<Table columns={columns}
-				       rowKey={record => record.registered}
-				       dataSource={this.state.data.dataSource}
-				       pagination={this.state.pagination}
-				       loading={this.state.loading}
-				       onChange={this.handleTableChange}
-				/>
+				{
+					dataSource ?
+						<Table columns={columns}
+						       rowKey={record => record.registered}
+						       dataSource={dataSource}
+						       pagination={pagination}
+						       loading={loading}
+						       onChange={this.handleTableChange}
+						/>
+						: <Spin tip="Loading..." />
+				}
 				<Modal
 					title="Change redord"
 					visible={this.state.modalOpen}
