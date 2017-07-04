@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {saveTableData} from '../../actions/table';
 
 import RenderModal from '../RenderModal'
-import { Spin } from 'antd';
+import { Spin, Icon } from 'antd';
 import './index.less'
 
 
@@ -132,6 +132,12 @@ class TablePage extends React.Component {
 				pagination,
 				component: this.props.url
 			});
+		}).catch((err) => {
+			this.props.saveTableData && this.props.saveTableData({
+				loading: false,
+				noData: true,
+				err,
+			});
 		});
 
 	};
@@ -170,12 +176,15 @@ class TablePage extends React.Component {
 	render() {
 		const columns = this.columns;
 		const {dataSource, pagination, loading} = this.state;
+		const {err, noData} = this.props.table;
+		noData ? console.log(err) : null;
 
 
 		return (
 			<PanelBox title="Table Page">
+
 				{
-					dataSource ?
+					dataSource  ?
 						<Table columns={columns}
 						       rowKey={record => record.registered}
 						       dataSource={dataSource}
@@ -183,7 +192,13 @@ class TablePage extends React.Component {
 						       loading={loading}
 						       onChange={this.handleTableChange}
 						/>
-						: <Spin tip="Loading..." />
+						: !noData && <Spin tip="Loading..." />
+				}
+				{
+					noData ? <div style={{textAlign: 'center', maxWidth: 480, margin: '25 auto 0'}}>
+						<Icon style={{ fontSize: 28, marginBottom: 15}} type="exclamation-circle" />
+						<h4>Что то пошло не так, попробуйте перезагрузить страницу или повторить попытку позднее</h4>
+					</div> : null
 				}
 				<Modal
 					title="Change redord"
