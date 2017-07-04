@@ -9,36 +9,52 @@ export default class Employees extends React.Component {
 	getColumns() {
 		return [
 			{
-				title: 'Name',
-				dataIndex: 'firstName',
+				title: 'Id',
+				dataIndex: 'id',
 				sorter: true,
 				//render: name => `${name.first} ${name.last}`,
-				render: firstName => `${firstName}`,
+				render: id => `${id}`,
 				width: '20%',
 			},
 			{
-				title: 'LastName',
-				dataIndex: 'lastName',
+				title: 'Number',
+				dataIndex: 'number',
 				sorter: true,
 				//render: name => `${name.first} ${name.last}`,
-				render: lastName => `${lastName}`,
+				render: number => `${number}`,
 				width: '20%',
 			},
 			{
-				title: 'Department',
-				dataIndex: 'departmentId',
+				title: 'Title',
+				dataIndex: 'title',
 				sorter: true,
 				//render: name => `${name.first} ${name.last}`,
-				render: departmentId => {
-					return ( dataJs().Departments[`${departmentId}`].name);
-				},
+				render: title => `${title}`,
 				width: '20%',
-			}
+			},
+			{
+				title: 'Created at',
+				dataIndex: 'created_at',
+				sorter: true,
+				//render: name => `${name.first} ${name.last}`,
+				render: created_at => `${created_at}`,
+				width: '20%',
+			},
+			// {
+			// 	title: 'title',
+			// 	dataIndex: 'departmentId',
+			// 	sorter: true,
+			// 	//render: name => `${name.first} ${name.last}`,
+			// 	render: departmentId => {
+			// 		return ( dataJs().Departments[`${departmentId}`].name);
+			// 	},
+			// 	width: '20%',
+			// }
 		];
 	}
 
 	render() {
-		const columns = this.columns;
+		//const columns = this.columns;
 
 		return (
 			<div>

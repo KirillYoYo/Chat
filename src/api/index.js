@@ -57,6 +57,30 @@ mock.onGet('/ariya_table_update').reply((config) => {
 	});
 });
 
+mock.onGet('/getRepos').reply((config) => {
+	return new Promise(function (resolve, reject) {
+		normalAxios.get('https://api.github.com/users/'+config.params.user+'/repos', {
+			responseType: 'json'
+		}).then((res) => {
+			resolve([200, res.data]);
+		}).catch((err) => {
+			resolve([500, err]);
+		});
+	});
+});
+
+mock.onGet('/getIssues').reply((config) => {
+	return new Promise(function (resolve, reject) {
+		normalAxios.get('https://api.github.com/search/issues?q='+config.params.user+'+'+config.params.rep+'?page='+config.params.current+'&per_page='+config.params.limit+'', {
+			responseType: 'json'
+		}).then((res) => {
+			resolve([200, res.data]);
+		}).catch((err) => {
+			resolve([500, err]);
+		});
+	});
+});
+
 
 
 mock.onGet('/updateWeather').reply((config) => {

@@ -64,106 +64,46 @@ class RenderModal extends React.Component {
 		}
 		callback();
 	};
+	ifIS (data) {
+		return data ? data : null
+	}
 
 
 
 	render() {
-		const {getFieldDecorator} = this.props.form;
-		const formItemLayout = {
-			labelCol: {span: 6},
-			wrapperCol: {span: 14},
-		};
-		const tailFormItemLayout = {
-			wrapperCol: {
-				xs: {
-					span: 14,
-					offset: 0,
-				},
-				sm: {
-					span: 14,
-					offset: 6,
-				},
-			},
-		};
-		const prefixSelector = getFieldDecorator('prefix', {
-			initialValue: '86',
-		})(
-			<Select className="icp-selector">
-				<Option value="86">+86</Option>
-			</Select>
-		);
-		return (
-			<Form onSubmit={this.handleSubmit}>
-				{
-					Object.keys(this.props.formItems).map((item, i) => {
-						const val = '' + this.props.formItems[item];
-						if (item !== 'id') {
-							if (item === 'departmentId') {
-								return (
-									<FormItem
-										{...formItemLayout}
-										label={item}
-										hasFeedback
-										key={i}
-									>
-										{getFieldDecorator(val, {
-											initialValue: dataJs().Departments[parseInt(val)].name,
-											// rules: [{
-											// 	type: 'string', message: 'The input is not valid name!',
-											// }, {
-											// 	required: true, message: 'Please input your  new name!',
-											// }],
-										})(
-											<Select
-												//value={val}
-												//size={size}
-												style={{ width: '100%' }}
-												//onChange={this.handleCurrencyChange}
-											>
-												{dataJs().Departments.map( (itemD, iD) => {
-													return (
-														<Option key={iD + 100} value={itemD.name}>{itemD.name}</Option>
-													)
-												} )}
-											</Select>
-										)}
-									</FormItem>
+		const {modalData} = this.props;
 
-								)
-							}
-							return (
-								<FormItem
-									{...formItemLayout}
-									label={item}
-									hasFeedback
-								    key={i}
-								>
-									{getFieldDecorator(val, {
-										initialValue: val,
-										// rules: [{
-										// 	type: 'string', message: 'The input is not valid name!',
-										// }, {
-										// 	required: true, message: 'Please input your  new name!',
-										// }],
-									})(
-										<Input />
-									)}
-								</FormItem>
-							)
-						}
-					})
+		return (
+			<div>
+				{
+					modalData ?
+						<div>
+							<Row>
+								<Col span={12}><img src={modalData.user.avatar_url} width="120" alt=""/></Col>
+								<Col span={12}>
+									<div style={{fontSize: '18'}}>{modalData.user.login}</div>
+									<a href={modalData.user.url}>{modalData.user.url}</a>
+								</Col>
+							</Row>
+							<div style={{paddingBottom: 15}} />
+							<Row>
+								<Col span={24}>
+									{modalData.title}
+								</Col>
+								<Col span={24}>
+									{modalData.created_at}
+								</Col>
+								<Col span={24}>
+									{modalData.state}
+								</Col>
+								<Col span={24}>
+									<a href={modalData.url}>{modalData.url}</a>
+								</Col>
+							</Row>
+						</div>
+					: null
 				}
-				<FormItem {...tailFormItemLayout}>
-					<Row>
-						<Col className="gutter-row" span={8}>
-							<Button type="primary" htmlType="submit" size="large" onClick={this.props.func.onOk}>Submit</Button>
-						</Col>
-						<Col className="gutter-row" span={8} offset={8}>
-							<Button type="" htmlType="submit" size="large" onClick={this.props.func.onCancel}>Cancel</Button>
-						</Col>
-					</Row>
-				</FormItem>
-			</Form>
+			</div>
 		);
 	}
 }

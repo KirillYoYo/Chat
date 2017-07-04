@@ -20,16 +20,16 @@ module.exports = {
 				// 	key: 103,
 				// 	url: '/table'
 				// },
-				{
-					name: 'Employees',
-					key: 104,
-					url: '/employees'
-				},
-				{
-					name: 'Departments',
-					key: 106,
-					url: '/departments'
-				},
+				// {
+				// 	name: 'Employees',
+				// 	key: 104,
+				// 	url: '/employees'
+				// },
+				// {
+				// 	name: 'Departments',
+				// 	key: 106,
+				// 	url: '/departments'
+				// },
 				{
 					name: 'Cssr',
 					key: 107,
