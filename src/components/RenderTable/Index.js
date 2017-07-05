@@ -177,6 +177,7 @@ class TablePage extends React.Component {
 						type="text"
 						//value={state.number}
 						//onChange={this.handleNumberChange}
+						placeholder="Username here"
 						style={{ width: '30%', marginRight: '3%'}}
 						onBlur={this.handlerUserName.bind(this)}
 					/>
@@ -185,6 +186,7 @@ class TablePage extends React.Component {
 						//size={size}
 						onChange={this.handleChangeRep.bind(this)}
 						showSearch
+						placeholder="Repository here"
 						optionFilterProp="children"
 						filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
 						style={{ width: '30%', marginRight: '3%'}}
