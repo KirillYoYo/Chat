@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="11px" viewBox="0 0 18 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
+    <title>delivery</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75">
+        <g id="sintez-test" transform="translate(-345.000000, -176.000000)" fill="#27BA9E">
+            <g id="2" transform="translate(21.000000, 121.000000)">
+                <path d="M337.6,56.1 L332.7,61 L331.6,59.9 L336.5,55 L337.6,56.1 Z M332.7,63.1 L340.9,55 L342,56.1 L332.7,65.3 L328.4,61 L329.5,59.9 L332.7,63.1 Z M324,61 L325.1,59.9 L329.4,64.2 L328.3,65.3 L324,61 Z" id="delivery"></path>
+            </g>
+        </g>
+    </g>
+</svg>

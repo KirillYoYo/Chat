@@ -3,15 +3,18 @@ import {
 } from '../actions/sintez';
 
 const initialState = {
-	items: [],
+	messages: [],
 };
 
-export default function table(state = initialState, action = {}) {
+export default function sintez(state = initialState, action = {}) {
 	switch (action.type) {
 		case SAVE_MESSAGES:
+			const new_items = state.messages;
+			new_items.push( action.obj);
+
 			return {
 				...state,
-				obj: action.obj
+				messages: new_items
 			};
 
 		default:

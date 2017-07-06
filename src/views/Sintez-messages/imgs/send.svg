@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45 (43475) - http://www.bohemiancoding.com/sketch -->
+    <title>send</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sintez-test" transform="translate(-846.000000, -777.000000)" fill="#4D9EDC">
+            <g id="Typer" transform="translate(0.000000, 750.000000)">
+                <path d="M865.6,27.8 C866.5,27.4 867.5,28.4 867.1,29.3 L858.9,48 C858.5,49.1 856.9,48.9 856.7,47.8 L855.1,39.8 L847.1,38.2 C846,38 845.9,36.5 846.9,36 L865.6,27.8 Z M858.3,43.7 L863.8,31.2 L851.3,36.7 L856.4,37.7 C856.8,37.8 857.2,38.1 857.3,38.6 L858.3,43.7 Z" id="send"></path>
+            </g>
+        </g>
+    </g>
+</svg>

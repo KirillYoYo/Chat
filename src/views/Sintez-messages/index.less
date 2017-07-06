@@ -1,0 +1,142 @@
+@fontface {
+	font-family: 'Open Sans', sans-serif;
+	src: url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&amp;subset=cyrillic,cyrillic-ext")
+}
+
+.sintez {
+	.wrapper {
+		max-height: 900px;
+		max-width: 800px;
+		margin: 0 auto;
+
+		.messages {
+			background: #ccc;
+			padding: 0px 20px 30px;
+			height: 85%;
+			background: url("imgs/bg.png") no-repeat 50% 50%;
+
+			.inner {
+				padding: 20px 0px;
+				.mess {
+					display: flex;
+					flex-direction: row;
+					margin-bottom: 25px;
+					min-height: 80px;
+
+					.img {
+						padding: 9px 10px 19px 0px;
+						img {
+							border-radius: 38px;
+						}
+					}
+					.content {
+						font-family: 'Open Sans', sans-serif;
+						padding: 8px 18px;
+						background: #fff;
+						border-radius: 10px;
+						position: relative;
+						&:after {
+							content: '';
+							display: block;
+							position: absolute;
+							top: 0;
+							left: -36px;
+							width: 56px;
+							height: 42px;
+							background: url("imgs/angle-mess.png") no-repeat 50% 50%;
+						}
+
+						.name {
+							color: #253036;
+							font-size: 14px;
+							font-weight: 600;
+						}
+						.text {
+							padding: 8px 0px;
+							color: #253036;
+							font-weight: 300;
+						}
+						.date-outer {
+							align-items: center;
+							display: flex;
+							flex-direction: row;
+							justify-content: flex-end;
+
+							.status {
+								padding-right: 8px;
+							}
+							.date {
+								color: #A1B2BF;
+								font-weight: 300;
+							}
+						}
+					}
+					&.your {
+						justify-content: flex-end;
+
+						.img {
+							order: 2;
+							padding: 9px 0px 19px 10px;
+						}
+						.content {
+							background: #5DA5CA;
+							&:after {
+								content: '';
+								display: block;
+								position: absolute;
+								left: auto;
+								top: 0;
+								transform: scaleX(-1);
+								right: -36px;
+								width: 56px;
+								height: 42px;
+								background: url("imgs/angle-mess.png") no-repeat 50% 50%;
+							}
+
+							.name {
+								color: #FFFFFF;
+							}
+							.text {
+								color: #FFFFFF;
+							}
+							.date-outer {
+								.date {
+									color: #FFFFFF;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.write-message {
+			position: relative;
+			border: 1px solid #333333;
+			height: 15%;
+			.sent-message-btn {
+				display: block;
+				position: absolute;
+				top: 10px;
+				right: 0;
+				height: 40px;
+				width: 40px;
+				cursor: pointer;
+				border-radius: 50px;
+				margin: 5px;
+				background: url("imgs/send.svg") no-repeat 50% 50%;
+
+				&:hover {
+					-webkit-box-shadow: inset 0px 0px 7px 1px rgba(93,165,202,0.56);
+					-moz-box-shadow: inset 0px 0px 7px 1px rgba(93,165,202,0.56);
+					box-shadow: inset 0px 0px 7px 1px rgba(93,165,202,0.56);
+				}
+			}
+			.textarea {
+				height: 100% !important; //todo костылик
+				padding: 26px 10px 26px 20px;
+				outline: none;
+
+			}
+		}
+	}
+}
