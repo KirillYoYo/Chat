@@ -35,6 +35,11 @@ module.exports = {
 					key: 107,
 					url: '/cssrTable'
 				},
+				{
+					name: 'Sintez',
+					key: 108,
+					url: '/sintez'
+				},
 				// {
 				// 	name: '选项2',
 				// 	key: 104,
