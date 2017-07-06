@@ -46,7 +46,7 @@ class Login extends React.Component {
     }
 
     if (user) {
-      this.context.router.replace('/cssrTable');
+      this.context.router.replace('/sintez');
     }
   }
 

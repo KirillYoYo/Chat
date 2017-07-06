@@ -30,11 +30,11 @@ module.exports = {
 				// 	key: 106,
 				// 	url: '/departments'
 				// },
-				{
-					name: 'Cssr',
-					key: 107,
-					url: '/cssrTable'
-				},
+				// {
+				// 	name: 'Cssr',
+				// 	key: 107,
+				// 	url: '/cssrTable'
+				// },
 				{
 					name: 'Sintez',
 					key: 108,
