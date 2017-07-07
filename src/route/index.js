@@ -16,7 +16,7 @@ import Sintez from '../views/Sintez-messages';
 
 const validate = function (next, replace, callback) {
 	const isLoggedIn = !!window.localStorage.getItem('uid')
-	if (!isLoggedIn && next.location.pathname != '/login') {
+	if (!isLoggedIn && next.location.pathname !== '/login') {
 		replace('/login')
 	}
 	callback()
@@ -31,9 +31,6 @@ const routes = (
 			<Route path="form" component={Form}/>
 			<Route path="table" component={Table}/>
 			<Route path="page2" component={Page2}/>
-			<Route path="employees" component={Employees}/>
-			<Route path="departments" component={Departments}/>
-			<Route path="cssrTable" component={CssrTable}/>
 			<Route path="sintez" component={Sintez}/>
 		</Route>
 		<Route path="login" component={Login}/>
